@@ -14,7 +14,8 @@ export function toArray(data) {
     d.email,
     d.phone,
     d.website,
-    d.id
+    d.address.city,
+    d.id,
   ])
 }
 
@@ -25,6 +26,57 @@ export function getHeaderConfig() {
     {name: 'Email'},
     {name: 'Phone'},
     {name: 'Website'},
+    {name: 'Kota', type:'bold'},
     {name: 'Action', type: 'dropdown'},
+  ]
+}
+
+export function filterFields() {
+  return [
+    {
+      kind: 'input',
+      name: 'Name',
+      label: 'Nama',
+      options: {
+        type: 'text',
+        placeholder: 'Masukkan Nama'
+      },
+    },
+    {
+      kind: 'input',
+      name: 'username',
+      label: 'Username',
+      options: {
+        type: 'text',
+        placeholder: 'Masukkan Username'
+      },
+    },
+    {
+      kind: 'input',
+      name: 'email',
+      label: 'Email',
+      options: {
+        type: 'text',
+        placeholder: 'Masukkan Email'
+      },
+    },
+    {
+      kind: 'input',
+      name: 'phone',
+      label: 'Phone',
+      options: {
+        type: 'text',
+        placeholder: 'Masukkan Phone'
+      },
+    },
+    {
+      kind: 'input',
+      name: 'website',
+      label: 'Website',
+      options: {
+        type: 'text',
+        placeholder: 'Masukkan Website'
+      },
+    },
   ]
 }

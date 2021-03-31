@@ -3,3 +3,21 @@
 @tailwind components;
 
 @tailwind utilities;
+
+input.pagger {
+  width: 50px;
+}
+
+.circle-btn {
+  @apply text-xs font-semibold flex w-8 h-8 mx-1 p-0 rounded-full items-center justify-center leading-tight relative border border-solid border-orange-500 bg-white text-orange-500;
+}
+
+.modal-container {
+  width: 100%;
+}
+
+@media only screen and (max-width: 400px) {
+  .modal-container {
+    width: 350px;
+  }
+}

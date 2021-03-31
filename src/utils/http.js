@@ -9,6 +9,7 @@ export async function post(url, data) {
     body: JSON.stringify(data),
     headers: {
       "Content-type": "application/json; charset=UTF-8",
+      
     },
   });
   return response.json();

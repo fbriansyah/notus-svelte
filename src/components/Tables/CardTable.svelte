@@ -1,13 +1,17 @@
 <script>
+  import {createEventDispatcher} from 'svelte';
   // core components
   import Column from "./Column.svelte";
   import Button from '../Button/Button.svelte';
+  import Pager from './Pager.svelte';
 
   // can be one of light or dark
   export let color = "light";
   export let title = "Card Tables";
   export let headers = ["Col 1", "Col 2", "Col 3", "Col 4", "Col 5", ""]; // ["Name", "Username", "Email", "Phone", "Website"]
   export let data;
+
+  const dispatch = createEventDispatcher();
 
   function generateHeaderClasses(color) {
     return `px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left ${
@@ -16,6 +20,9 @@
         : "bg-red-700 text-red-200 border-red-600"
     }`;
   }
+
+  const onFilter = () => dispatch('filter');
+  const onAdd = () => dispatch('add');
 </script>
 
 <div
@@ -35,7 +42,16 @@
           >
             {title}
           </h3>
-          <Button additionalClass="ml-auto">Tambah</Button>
+          <div class="ml-auto flex space-x-1">
+            <select class="block appearance-none text-sm bg-gray-200 border border-gray-200 text-gray-700 py-2 px-2 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state">
+              <option>10</option>
+              <option>15</option>
+              <option>25</option>
+              <option>100</option>
+            </select>
+            <Button on:click={onFilter} colorClass="text-white bg-indigo-500 active:bg-indigo-600">Filter</Button>
+            <Button on:click={onAdd}>Tambah</Button>
+          </div>
         </div>
       </div>
     </div>
@@ -69,4 +85,5 @@
       </tbody>
     </table>
   </div>
+  <Pager />
 </div>
