@@ -1,6 +1,7 @@
 <script>
   import { createEventDispatcher } from "svelte";
 
+  import { fade } from 'svelte/transition';
 
   export let isShow = false;
   export let title = "Modal Title";
@@ -11,7 +12,7 @@
 </script>
 
 {#if isShow}
-<div class="overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center flex">
+<div transition:fade class="overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center flex">
   <div class="relative w-auto my-6 mx-auto max-w-3xl modal-container">
     <!--content-->
     <div class="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
@@ -42,5 +43,5 @@
     </div>
   </div>
 </div>
-<div class="opacity-25 fixed inset-0 z-40 bg-black"></div>
+<div transition:fade class="opacity-25 fixed inset-0 z-40 bg-black"></div>
 {/if}

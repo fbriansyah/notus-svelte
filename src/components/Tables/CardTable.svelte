@@ -1,5 +1,6 @@
 <script>
   import {createEventDispatcher} from 'svelte';
+  import {slide} from 'svelte/transition';
   // core components
   import Column from "./Column.svelte";
   import Button from '../Button/Button.svelte';
@@ -26,6 +27,7 @@
 </script>
 
 <div
+  transition:slide
   class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded {color ===
   'light'
     ? 'bg-white'
