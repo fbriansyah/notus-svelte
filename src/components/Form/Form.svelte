@@ -16,6 +16,7 @@
         name={field.name}
         label={field.label}
         type={field.options.type}
+        size={field.options.size ? field.options.size: ''}
         placeholder={field.options.placeholder}
       />
     {:else if field.kind === "select"}

@@ -1,14 +1,21 @@
 <script>
   import { link } from "svelte-routing";
+  import {sideMenu} from '../../stores/menus';
 
   // core components
   import NotificationDropdown from "components/Dropdowns/NotificationDropdown.svelte";
   import UserDropdown from "components/Dropdowns/UserDropdown.svelte";
+  import SidebarItem from "./SidebarItem.svelte";
 
   let collapseShow = "hidden";
+  let isOpen = false;
 
   function toggleCollapseShow(classes) {
     collapseShow = classes;
+  }
+
+  function collapseMenu() {
+    isOpen = !isOpen;
   }
 
   export let location;
@@ -34,7 +41,7 @@
       class="md:block text-left md:pb-2 text-blueGray-600 mr-0 inline-block whitespace-nowrap text-sm uppercase font-bold p-4 px-0"
       href="/"
     >
-      Notus Svelte
+      Sirendra
     </a>
     <!-- User -->
     <ul class="md:hidden items-center flex flex-wrap list-none">
@@ -60,7 +67,7 @@
               class="md:block text-left md:pb-2 text-blueGray-600 mr-0 inline-block whitespace-nowrap text-sm uppercase font-bold p-4 px-0"
               href="/"
             >
-              Notus Svelte
+              Sirendra
             </a>
           </div>
           <div class="w-6/12 flex justify-end">
@@ -80,7 +87,7 @@
           <input
             type="text"
             placeholder="Search"
-            class="border-0 px-3 py-2 h-12 border border-solid border-blueGray-500 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-base leading-snug shadow-none outline-none focus:outline-none w-full font-normal"
+            class=" px-3 py-2 h-12 border border-solid border-blueGray-500 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-base leading-snug shadow-none outline-none focus:outline-none w-full font-normal"
           />
         </div>
       </form>
@@ -96,70 +103,17 @@
       <!-- Navigation -->
 
       <ul class="md:flex-col md:min-w-full flex flex-col list-none">
-        <li class="items-center">
-          <a
-            use:link
-            href="/admin/dashboard"
-            class="text-xs uppercase py-3 font-bold block {location.href.indexOf('/admin/dashboard') !== -1 ? 'text-red-500 hover:text-red-600':'text-blueGray-700 hover:text-blueGray-500'}"
-          >
-            <i
-              class="fas fa-tv mr-2 text-sm {location.href.indexOf('/admin/dashboard') !== -1 ? 'opacity-75' : 'text-blueGray-300'}"
-            ></i>
-            Dashboard
-          </a>
-        </li>
-
-        <li class="items-center">
-          <a
-            use:link
-            href="/admin/users"
-            class="text-xs uppercase py-3 font-bold block {location.href.indexOf('/admin/users') !== -1 ? 'text-red-500 hover:text-red-600':'text-blueGray-700 hover:text-blueGray-500'}"
-          >
-            <i
-              class="fas fa-address-card mr-2 text-sm {location.href.indexOf('/admin/users') !== -1 ? 'opacity-75' : 'text-blueGray-300'}"
-            ></i>
-            Users
-          </a>
-        </li>
-
-        <li class="items-center">
-          <a
-            use:link
-            href="/admin/settings"
-            class="text-xs uppercase py-3 font-bold block {location.href.indexOf('/admin/settings') !== -1 ? 'text-red-500 hover:text-red-600':'text-blueGray-700 hover:text-blueGray-500'}"
-          >
-            <i
-              class="fas fa-tools mr-2 text-sm {location.href.indexOf('/admin/settings') !== -1 ? 'opacity-75' : 'text-blueGray-300'}"
-            ></i>
-            Settings
-          </a>
-        </li>
-
-        <li class="items-center">
-          <a
-            use:link
-            href="/admin/tables"
-            class="text-xs uppercase py-3 font-bold block {location.href.indexOf('/admin/tables') !== -1 ? 'text-red-500 hover:text-red-600':'text-blueGray-700 hover:text-blueGray-500'}"
-          >
-            <i
-              class="fas fa-table mr-2 text-sm {location.href.indexOf('/admin/tables') !== -1 ? 'opacity-75' : 'text-blueGray-300'}"
-            ></i>
-            Tables
-          </a>
-        </li>
-
-        <li class="items-center">
-          <a
-            use:link
-            href="/admin/maps"
-            class="text-xs uppercase py-3 font-bold block {location.href.indexOf('/admin/maps') !== -1 ? 'text-red-500 hover:text-red-600':'text-blueGray-700 hover:text-blueGray-500'}"
-          >
-            <i
-              class="fas fa-map-marked mr-2 text-sm {location.href.indexOf('/admin/maps') !== -1 ? 'opacity-75' : 'text-blueGray-300'}"
-            ></i>
-            Maps
-          </a>
-        </li>
+        {#each $sideMenu as menu, i (menu.title)}
+          <SidebarItem 
+            icon={menu.icon}
+            isOpen={menu.isOpen}
+            location={location.href}
+            children={menu.children}
+            title={menu.title}
+            url={menu.url}
+            on:toggle={sideMenu.toggleOpen(i)}
+          />
+        {/each}
       </ul>
 
       <!-- Divider -->

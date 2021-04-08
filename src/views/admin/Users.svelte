@@ -6,6 +6,7 @@
 
   import * as Users from '../../api/users';
   import {onMount} from 'svelte';
+import TopNavbar from "../../components/Navbars/TopNavbar.svelte";
   // core components
   export let location;
 
@@ -31,6 +32,7 @@
 <Modal title="Filter Data" isShow={isModalShow} on:close={onCloseModal}>
   <Form fields={filterField} isFull />
 </Modal>
+<TopNavbar />
 <div class="flex flex-wrap mt-4">
   <div class="w-full mb-12 px-4">
     {#if mode === "view"}

@@ -58,9 +58,9 @@
       </div>
     </div>
   </div>
-  <div class="block w-full overflow-x-auto">
+  <div class="block w-full overflow-x-auto mb-2">
     <!-- Projects table -->
-    <table class="items-center w-full bg-transparent border-collapse">
+    <table class="items-center w-full bg-transparent border-collapse bg-indigo-50">
       <thead>
         <tr>
           {#each headers as header, i (i)}
@@ -87,5 +87,7 @@
       </tbody>
     </table>
   </div>
-  <Pager />
+  <div class="pr-2">
+    <Pager />
+  </div>
 </div>

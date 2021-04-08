@@ -39,6 +39,7 @@ export function filterFields() {
       label: 'Nama',
       options: {
         type: 'text',
+        size: 'sm',
         placeholder: 'Masukkan Nama'
       },
     },
@@ -47,6 +48,7 @@ export function filterFields() {
       name: 'username',
       label: 'Username',
       options: {
+        size: 'sm',
         type: 'text',
         placeholder: 'Masukkan Username'
       },
@@ -56,6 +58,7 @@ export function filterFields() {
       name: 'email',
       label: 'Email',
       options: {
+        size: 'sm',
         type: 'text',
         placeholder: 'Masukkan Email'
       },
@@ -65,6 +68,7 @@ export function filterFields() {
       name: 'phone',
       label: 'Phone',
       options: {
+        size: 'sm',
         type: 'text',
         placeholder: 'Masukkan Phone'
       },
@@ -74,6 +78,7 @@ export function filterFields() {
       name: 'website',
       label: 'Website',
       options: {
+        size: 'sm',
         type: 'text',
         placeholder: 'Masukkan Website'
       },
