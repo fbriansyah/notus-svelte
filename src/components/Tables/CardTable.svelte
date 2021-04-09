@@ -72,8 +72,8 @@
       </thead>
       <tbody>
         {#if data && data.length > 0}
-          {#each data as row}
-            <tr>
+          {#each data as row, j}
+            <tr class="{(j%2) === 0 ? "bg-white": "bg-gray-50"} hover:bg-blueGray-200">
               {#each row as col, i}
                 <Column 
                   data="{col}" 

@@ -2,10 +2,11 @@
   import Table from "../../components/Tables/CardTable.svelte";
   import Modal from "../../components/Modal/Modal.svelte";
   import Form from '../../components/Form/Form.svelte';
-  import CardEditor from '../../components/Cards/CardEditor.svelte';
+  // import CardEditor from '../../components/Cards/CardEditor.svelte';
 
   import * as Users from '../../api/users';
   import {onMount} from 'svelte';
+  import EditorForm from "../../components/Form/EditorForm.svelte";
   // core components
   export let location;
 
@@ -41,9 +42,10 @@
         headers={Users.getHeaderConfig()} 
         data={tableData}/>
       {:else}
-      <CardEditor title="User Editor" on:cancel={onEditorCancel}>
+      <!-- <CardEditor title="User Editor" on:cancel={onEditorCancel}>
         <Form fields={filterField} />
-      </CardEditor>
+      </CardEditor> -->
+      <EditorForm />
     {/if}
   </div>
 </div>
