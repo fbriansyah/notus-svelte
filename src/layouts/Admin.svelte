@@ -2,9 +2,9 @@
   import { Router, Route } from "svelte-routing";
 
   // components for this layout
-  import AdminNavbar from "components/Navbars/AdminNavbar.svelte";
+  // import AdminNavbar from "components/Navbars/AdminNavbar.svelte";
   import Sidebar from "components/Sidebar/Sidebar.svelte";
-  import HeaderStats from "components/Headers/HeaderStats.svelte";
+  // import HeaderStats from "components/Headers/HeaderStats.svelte";
   import FooterAdmin from "components/Footers/FooterAdmin.svelte";
 
   // pages for this layout
@@ -13,9 +13,16 @@
   import Tables from "views/admin/Tables.svelte";
   import Users from "views/admin/Users.svelte";
   import Maps from "views/admin/Maps.svelte";
+  import TopNavbar from "../components/Navbars/TopNavbar.svelte";
+  import { onMount } from "svelte";
+  import { topMenu } from "../stores/menus";
 
   export let location;
   export let admin = "";
+
+  onMount(() => {
+    topMenu.init()
+  })
 </script>
 
 <div>
@@ -25,6 +32,7 @@
     <HeaderStats {location} /> -->
 
     <div class="px-4 md:px-10 mx-auto w-full">
+      <TopNavbar location={location.href} />
       <Router url="admin">
         <Route path="dashboard" component={Dashboard} />
         <Route path="settings" component={Settings} />

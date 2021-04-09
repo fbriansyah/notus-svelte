@@ -8,14 +8,9 @@
   import SidebarItem from "./SidebarItem.svelte";
 
   let collapseShow = "hidden";
-  let isOpen = false;
 
   function toggleCollapseShow(classes) {
     collapseShow = classes;
-  }
-
-  function collapseMenu() {
-    isOpen = !isOpen;
   }
 
   export let location;
