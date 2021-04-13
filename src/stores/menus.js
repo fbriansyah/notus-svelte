@@ -8,14 +8,18 @@ const sideMenuInitState = [
     url: '/admin/dashboard',
     icon: 'tv',
     children: [],
-    isOpen: false
   },
   {
     title: 'Users',
     url: '/admin/users',
     icon: 'address-card',
     children: [],
-    isOpen: false
+  },
+  {
+    title: 'Posts',
+    url: '/admin/posts',
+    icon: 'newspaper',
+    children: [],
   },
   {
     title: 'Nested',
@@ -53,35 +57,6 @@ const sideMenuInitState = [
         url: '/admin/nested6',
       }
     ],
-    isOpen: false
-  },
-  {
-    title: 'Test1',
-    url: '/admin/test1',
-    icon: 'address-card',
-    children: [],
-    isOpen: false
-  },
-  {
-    title: 'test2',
-    url: '/admin/test2',
-    icon: 'address-card',
-    children: [],
-    isOpen: false
-  },
-  {
-    title: 'Test3',
-    url: '/admin/test3',
-    icon: 'address-card',
-    children: [],
-    isOpen: false
-  },
-  {
-    title: 'Test4',
-    url: '/admin/test4',
-    icon: 'address-card',
-    children: [],
-    isOpen: false
   },
 ];
 
@@ -149,7 +124,7 @@ const createTopMenus = () => {
     if(url === topMenuInitState[0].url) {
       return
     } else {
-      // jika url bukan url dashboard maka bisa di delete
+      // hanya menu selain dashboard yang dapat didelete
       update(currentState => {
         const newState = currentState.filter((state) => url !== state.url)
         localStorage.setItem(localStorageKey, JSON.stringify(newState));
@@ -157,13 +132,6 @@ const createTopMenus = () => {
       })
     }
     navigate(topMenuInitState[0].url);
-  }
-
-  const clearActive= () => {
-    update(currentState => {
-      const newState = [...currentState];
-      return newState.map(state => ({...state, isActive:false}));
-    })
   }
 
   const selecteMenu = (url) => {
@@ -176,7 +144,6 @@ const createTopMenus = () => {
     addMenu,
     deleteMenu,
     selecteMenu,
-    clearActive,
     init
   }
 }

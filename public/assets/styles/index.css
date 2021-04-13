@@ -30,3 +30,6 @@ input.pagger {
 .top-menu::-webkit-scrollbar {
   display: none; /* Safari and Chrome */
 }
+
+.tableFixHead          { overflow: auto; height: 600px; }
+.tableFixHead thead th { position: sticky; top: 0; z-index: 1; }

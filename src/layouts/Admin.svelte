@@ -12,6 +12,7 @@
   import Settings from "views/admin/Settings.svelte";
   import Tables from "views/admin/Tables.svelte";
   import Users from "views/admin/Users.svelte";
+  import Posts from "views/admin/Posts.svelte";
   import Maps from "views/admin/Maps.svelte";
   import TopNavbar from "../components/Navbars/TopNavbar.svelte";
   import { onMount } from "svelte";
@@ -31,16 +32,17 @@
     <!-- <AdminNavbar />
     <HeaderStats {location} /> -->
 
-    <div class="px-4 md:px-10 mx-auto w-full">
+    <div class="px-4 md:px-10 mx-auto w-full h-screen">
       <TopNavbar location={location.href} />
       <Router url="admin">
         <Route path="dashboard" component={Dashboard} />
         <Route path="settings" component={Settings} />
         <Route path="tables" component={Tables} />
         <Route path="users" component={Users} />
+        <Route path="posts" component={Posts} />
         <Route path="maps" component={Maps} />
       </Router>
-      <FooterAdmin />
+      <!-- <FooterAdmin /> -->
     </div>
   </div>
 </div>

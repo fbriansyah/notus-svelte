@@ -1,12 +1,12 @@
 <script>
   import { createEventDispatcher } from "svelte";
-  import InputWithPrefix from "./EditorForm/InputWithPrefix.svelte";
-  import CheckboxGroup from "./EditorForm/CheckboxGroup.svelte";
-  import RadioGroup from "./EditorForm/RadioGroup.svelte";
-  import TextArea from "./EditorForm/TextArea.svelte";
-  import Input from "./EditorForm/Input.svelte";
-  import * as usersApi from "../../api/users";
-  import Select from "./EditorForm/Select.svelte";
+  import InputWithPrefix from "./InputWithPrefix.svelte";
+  import CheckboxGroup from "./CheckboxGroup.svelte";
+  import RadioGroup from "./RadioGroup.svelte";
+  import TextArea from "./TextArea.svelte";
+  import Input from "./Input.svelte";
+  import * as usersApi from "../../../api/users";
+  import Select from "./Select.svelte";
 
   export let withButton = false;
 
