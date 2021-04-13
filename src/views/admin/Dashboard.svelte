@@ -5,6 +5,8 @@
   // import CardPageVisits from "components/Cards/CardPageVisits.svelte";
   // import CardSocialTraffic from "components/Cards/CardSocialTraffic.svelte";
   export let location;
+
+  const pageTitle = "Dashboard";
 </script>
 
 <!-- <div>
@@ -25,6 +27,9 @@
     </div>
   </div>
 </div> -->
+<svelte:head>
+  <title>{pageTitle}</title>
+</svelte:head>
 <div class="flex flex-wrap mt-4">
   <div class="w-full mb-12" />
 </div>

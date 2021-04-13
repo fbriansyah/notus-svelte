@@ -16,14 +16,14 @@
     dispatch('toggle');
   }
 
-  function menuClickHandler() {
+  function menuClickHandler(_url, _title) {
     const _menu = {
-      title,
-      url
+      title: _title,
+      url: _url
     }
     topMenu.addMenu(_menu)
     topMenu.clearActive()
-    navigate(url)
+    navigate(_url)
   }
 
 </script>
@@ -31,7 +31,7 @@
 {#if url !== null || children.length === 0}
   <li class="items-center cursor-pointer">
     <span
-      on:click="{menuClickHandler}"
+      on:click="{() => menuClickHandler(url, title)}"
       class="text-xs uppercase py-3 font-bold block {location.indexOf(url) !== -1 ? 'text-red-500 hover:text-red-600':'text-blueGray-700 hover:text-blueGray-500'}"
     >
       <i
@@ -49,7 +49,7 @@
       </div>
       <ul class="{isOpen ? "flex": "hidden"} flex-col space-y-2 list-none py-2">
         {#each children as menu}
-          <li class="items-center cursor-pointer" on:click="{menuClickHandler}">
+          <li class="items-center cursor-pointer" on:click="{() => menuClickHandler(menu.url, menu.title)}">
             <i class="fas fa-{menu.icon} ml-4 mr-2 text-sm text-blueGray-300"></i> {menu.title}
           </li>
         {/each}

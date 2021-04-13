@@ -27,7 +27,7 @@
 
 <div>
   <Sidebar {location} />
-  <div class=" md:ml-64 bg-blueGray-100 pt-8">
+  <div class=" md:ml-64 bg-blueGray-100 pt-4">
     <!-- <AdminNavbar />
     <HeaderStats {location} /> -->
 

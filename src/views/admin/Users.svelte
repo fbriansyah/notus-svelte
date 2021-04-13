@@ -1,12 +1,12 @@
 <script>
+  import {onMount} from 'svelte';
   import Table from "../../components/Tables/CardTable.svelte";
   import Modal from "../../components/Modal/Modal.svelte";
   import Form from '../../components/Form/Form.svelte';
   // import CardEditor from '../../components/Cards/CardEditor.svelte';
 
   import * as Users from '../../api/users';
-  import {onMount} from 'svelte';
-  import EditorForm from "../../components/Form/EditorForm.svelte";
+  import EditorForm from "../../components/Form/EditorForm/EditorForm.svelte";
   // core components
   export let location;
 
@@ -25,13 +25,22 @@
   const onCloseModal = () => isModalShow = false;
   const onAdd = () => mode = "add";
   const onEditorCancel = () => mode = "view";
+
+  $: pageTitle = "User" + (mode !== 'view'?  " | " + mode : "");
   
 
 </script>
 
 <Modal title="Filter Data" isShow={isModalShow} on:close={onCloseModal}>
   <Form fields={filterField} isFull />
+  <!-- <EditorForm on:cancel="{onEditorCancel}" /> -->
+
 </Modal>
+
+<svelte:head>
+  <title>{pageTitle}</title>
+</svelte:head>
+
 <div class="flex flex-wrap mt-4">
   <div class="w-full mb-12">
     {#if mode === "view"}
@@ -45,7 +54,7 @@
       <!-- <CardEditor title="User Editor" on:cancel={onEditorCancel}>
         <Form fields={filterField} />
       </CardEditor> -->
-      <EditorForm />
+      <EditorForm on:cancel="{onEditorCancel}" withButton />
     {/if}
   </div>
 </div>

@@ -25,19 +25,62 @@ const sideMenuInitState = [
       {
         title: 'Nested 1',
         icon: 'tools',
-        url: '#/admin/nested',
+        url: '/admin/nested1',
       },
       {
         title: 'Nested 2',
         icon: 'map-marked',
-        url: '#/admin/nested',
+        url: '/admin/nested2',
       },
       {
         title: 'Nested 3',
         icon: 'cat',
-        url: '#/admin/nested',
+        url: '/admin/nested3',
+      },
+      {
+        title: 'Nested 4',
+        icon: 'cat',
+        url: '/admin/nested4',
+      },
+      {
+        title: 'Nested 5',
+        icon: 'cat',
+        url: '/admin/nested5',
+      },
+      {
+        title: 'Nested 6',
+        icon: 'cat',
+        url: '/admin/nested6',
       }
     ],
+    isOpen: false
+  },
+  {
+    title: 'Test1',
+    url: '/admin/test1',
+    icon: 'address-card',
+    children: [],
+    isOpen: false
+  },
+  {
+    title: 'test2',
+    url: '/admin/test2',
+    icon: 'address-card',
+    children: [],
+    isOpen: false
+  },
+  {
+    title: 'Test3',
+    url: '/admin/test3',
+    icon: 'address-card',
+    children: [],
+    isOpen: false
+  },
+  {
+    title: 'Test4',
+    url: '/admin/test4',
+    icon: 'address-card',
+    children: [],
     isOpen: false
   },
 ];
