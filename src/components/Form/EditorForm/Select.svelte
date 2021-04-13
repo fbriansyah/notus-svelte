@@ -22,8 +22,9 @@
       bind:value={value}
       class="{additionalClasses} max-w-lg block focus:ring-indigo-500 focus:border-indigo-500 w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
     >
+      <option value="">-Pilih Salah Satu-</option>
       {#each options as option}
-        <option value={option.value}>{option.field}</option>
+        <option value={option.value}>{option.label}</option>
       {/each}
     </select>
   </div>

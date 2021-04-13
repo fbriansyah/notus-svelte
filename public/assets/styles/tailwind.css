@@ -2979,6 +2979,10 @@ select {
   padding-left: 0.75rem;
 }
 
+.pt-4 {
+  padding-top: 1rem;
+}
+
 .pr-4 {
   padding-right: 1rem;
 }
@@ -4128,10 +4132,6 @@ input.pagger {
 
   .sm\:pt-5 {
     padding-top: 1.25rem;
-  }
-
-  .sm\:pt-10 {
-    padding-top: 2.5rem;
   }
 
   .sm\:text-gray-700 {
