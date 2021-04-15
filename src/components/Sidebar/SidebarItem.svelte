@@ -22,7 +22,6 @@
       url: _url
     }
     topMenu.addMenu(_menu)
-    topMenu.clearActive()
     navigate(_url)
   }
 

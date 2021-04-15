@@ -14,9 +14,12 @@
   let isModalShow = false;
   let filterField = Users.filterFields();
   let mode = 'view';
+  let isLoading = false;
 
   onMount(() => {
+    isLoading = true;
     Users.fetch().then(data => {
+      isLoading = false;
       tableData = Users.toArray(data);
     })
   })
@@ -32,8 +35,8 @@
 </script>
 
 <Modal title="Filter Data" isShow={isModalShow} on:close={onCloseModal}>
-  <Form fields={filterField} isFull />
-  <!-- <EditorForm on:cancel="{onEditorCancel}" /> -->
+  <!-- <Form fields={filterField} isFull /> -->
+  <EditorForm on:cancel="{onEditorCancel}" />
 
 </Modal>
 
@@ -48,13 +51,14 @@
         title="Users Data" 
         on:filter="{onShowFilter}"
         on:add="{onAdd}"
+        {isLoading}
         headers={Users.getHeaderConfig()} 
         data={tableData}/>
       {:else}
       <!-- <CardEditor title="User Editor" on:cancel={onEditorCancel}>
         <Form fields={filterField} />
       </CardEditor> -->
-      <EditorForm on:cancel="{onEditorCancel}" withButton />
+      <EditorForm on:cancel="{onEditorCancel}" title="User Editor" withButton />
     {/if}
   </div>
 </div>

@@ -14,10 +14,13 @@
   let isModalShow = false;
   let filterField = Api.filterFields();
   let mode = 'view';
+  let isLoading = false;
 
   onMount(() => {
+    isLoading = true;
     Api.fetch().then(data => {
       tableData = Api.toArray(data);
+      isLoading = false;
     })
   })
 
@@ -48,6 +51,7 @@
         title="Posts Data" 
         on:filter="{onShowFilter}"
         on:add="{onAdd}"
+        {isLoading}
         headers={Api.getHeaderConfig()} 
         data={tableData}/>
       {:else}

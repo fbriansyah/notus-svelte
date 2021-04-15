@@ -1,6 +1,6 @@
 <script>
   import { createEventDispatcher } from "svelte";
-  import { slide } from "svelte/transition";
+  import { fade } from "svelte/transition";
   // core components
   import Column from "./Column.svelte";
   // import Button from "../Button/Button.svelte";
@@ -13,6 +13,7 @@
   export let title = "Card Tables";
   export let headers = []; // ["Name", "Username", "Email", "Phone", "Website"]
   export let data;
+  export let isLoading = false;
 
   const dispatch = createEventDispatcher();
 
@@ -29,7 +30,7 @@
 </script>
 
 <div
-  transition:slide
+  transition:fade
   class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded {color ===
   'light'
     ? 'bg-white'
@@ -88,7 +89,13 @@
         </tr>
       </thead>
       <tbody>
-        {#if data && data.length > 0}
+        {#if isLoading}
+          <tr>
+            {#each headers as header (header.name)}
+              <Column type="skeleton-box" />
+            {/each}
+          </tr>
+        {:else if data && data.length > 0}
           {#each data as row, j}
             <tr
               class="{j % 2 === 0

@@ -9,6 +9,8 @@
   import Select from "./Select.svelte";
 
   export let withButton = false;
+  export let title = '';
+  export let subtitle = '';
 
   const dispatch = createEventDispatcher();
 
@@ -28,13 +30,16 @@
 <form class="space-y-8 divide-y divide-gray-200 bg-white rounded-md p-4">
   <div class="space-y-8 divide-y divide-gray-200 sm:space-y-5">
     <div>
+      {#if title !== ''}
       <div>
-        <h3 class="text-lg leading-6 font-medium text-gray-900">Profile</h3>
-        <p class="mt-1 max-w-2xl text-sm text-gray-500">
-          This information will be displayed publicly so be careful what you
-          share.
-        </p>
+        <h3 class="text-lg leading-6 font-medium text-gray-900">{title}</h3>
+        {#if subtitle !== ''}
+          <p class="mt-1 max-w-2xl text-sm text-gray-500">
+            {subtitle}
+          </p>
+        {/if}
       </div>
+      {/if}
 
       <div class="mt-6 sm:mt-5 space-y-6 sm:space-y-5">
         {#each editorFields as field (field.name)}

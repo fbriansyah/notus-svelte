@@ -37,6 +37,8 @@
     <span class="overflow-hidden truncate w-2">
       {truncate(data, 20)}
     </span>
+  {:else if type === 'skeleton-box'}
+    <span class="skeleton-box h-5 w-2/3 inline-block"></span>
   {:else}
     {data}
   {/if}
