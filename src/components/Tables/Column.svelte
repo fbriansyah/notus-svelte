@@ -1,15 +1,30 @@
 <script>
   import TableDropdown from "components/Dropdowns/TableDropdown.svelte";
+  import { createEventDispatcher } from "svelte";
 
   export let type = "";
   export let data = "";
   export let additionalClasses = "";
+
+  const dispatch = createEventDispatcher();
 
   const truncate = (text, length) => {
     if(text.length > length) {
       return text.substr(0, length) + "...";
     } else {
       return text;
+    }
+  }
+
+  const columnActionHandler = (action, data, e) => {
+    if(action === 'checkbox') {
+      if(e.target.checked) {
+        dispatch('columnAction', {action: 'checkbox-add', data})
+      } else {
+        dispatch('columnAction', {action: 'checkbox-del', data})
+      }
+    } else {
+      dispatch('columnAction', {action, data})
     }
   }
 
@@ -27,6 +42,7 @@
       <input
         value={data}
         id={"checkbox-table-"+data}
+        on:change="{(e) => columnActionHandler('checkbox', data, e)}"
         type="checkbox"
         class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded"
       />

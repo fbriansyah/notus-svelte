@@ -21,13 +21,15 @@ export function toArray(data) {
 
 export function getHeaderConfig() {
   return [
-    {name: '#', type: 'checkbox'},
-    {name: 'Title', type: 'bold'},
-    {name: 'Body', type: 'truncate'},
-    {name: 'Text 1', type: 'truncate'},
-    {name: 'Text 2', type: 'truncate'},
-    {name: 'Text 3', type: 'truncate'},
-    {name: 'Action', type: 'dropdown'},
+    {name: '#', type: 'checkbox', children: []},
+    {name: 'Title', type: 'bold', children: []},
+    {name: 'Body', type: 'truncate', children: []},
+    {name: 'Text', type: 'truncate', children: [
+      {name: 'Text 1', type: 'truncate'},
+      {name: 'Text 2', type: 'truncate'},
+      {name: 'Text 3', type: 'truncate'},
+    ]},
+    {name: 'Action', type: 'dropdown', children: []},
   ]
 }
 

@@ -21,13 +21,13 @@ export function toArray(data) {
 
 export function getHeaderConfig() {
   return [
-    {name: 'Name', type: 'bold'},
-    {name: 'Username'},
-    {name: 'Email'},
-    {name: 'Phone'},
-    {name: 'Website'},
-    {name: 'Kota', type:'bold'},
-    {name: 'Action', type: 'dropdown'},
+    {name: 'Name', type: 'bold', children: []},
+    {name: 'Username', children: []},
+    {name: 'Email', children: []},
+    {name: 'Phone', children: []},
+    {name: 'Website', children: []},
+    {name: 'Kota', type:'bold', children: []},
+    {name: 'Action', type: 'dropdown', children: []},
   ]
 }
 

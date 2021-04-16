@@ -15,6 +15,7 @@
   let filterField = Api.filterFields();
   let mode = 'view';
   let isLoading = false;
+  let listSelectedID = [];
 
   onMount(() => {
     isLoading = true;
@@ -29,8 +30,23 @@
   const onAdd = () => mode = "add";
   const onEditorCancel = () => mode = "view";
 
+  // reactive variable
   $: pageTitle = "Post" + (mode !== 'view'?  " | " + mode : "");
+  $: isActionsShow = (listSelectedID.length > 0)
   
+  const columnActionHandler = e => {
+    const {data, action} = e.detail;
+    if(action === 'checkbox-add') {
+      const newList = [...listSelectedID]
+      newList.push(data);
+      listSelectedID = newList;
+    }
+
+    if(action === 'checkbox-del') {
+      const newList = [...listSelectedID]
+      listSelectedID = newList.filter(dt => dt !== data);
+    }
+  }
 
 </script>
 
@@ -51,7 +67,9 @@
         title="Posts Data" 
         on:filter="{onShowFilter}"
         on:add="{onAdd}"
+        on:columnAction="{columnActionHandler}"
         {isLoading}
+        {isActionsShow}
         headers={Api.getHeaderConfig()} 
         data={tableData}/>
       {:else}
